@@ -7,7 +7,7 @@ packages:
       name: analyzer
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.36.4"
+    version: "0.37.1+1"
   args:
     dependency: "direct main"
     description:
@@ -35,7 +35,7 @@ packages:
       name: build
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.1.6"
+    version: "1.2.0"
   build_config:
     dependency: transitive
     description:
@@ -49,28 +49,28 @@ packages:
       name: build_daemon
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.0.0"
+    version: "2.1.0"
   build_resolvers:
     dependency: "direct main"
     description:
       name: build_resolvers
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.0.7"
+    version: "1.1.1"
   build_runner:
     dependency: "direct main"
     description:
       name: build_runner
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.6.7"
+    version: "1.7.1"
   build_runner_core:
     dependency: "direct main"
     description:
       name: build_runner_core
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "3.0.9"
+    version: "4.1.0"
   built_collection:
     dependency: transitive
     description:
@@ -120,6 +120,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.1.1"
+  coverage:
+    dependency: transitive
+    description:
+      name: coverage
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.13.3"
   crypto:
     dependency: transitive
     description:
@@ -154,7 +161,7 @@ packages:
       name: front_end
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.1.19"
+    version: "0.1.21+1"
   glob:
     dependency: "direct main"
     description:
@@ -217,21 +224,21 @@ packages:
       name: json_annotation
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.3.0"
+    version: "3.0.0"
   json_serializable:
     dependency: "direct main"
     description:
       name: json_serializable
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.3.0"
+    version: "3.2.3"
   kernel:
     dependency: transitive
     description:
       name: kernel
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.3.19"
+    version: "0.3.21+1"
   logging:
     dependency: "direct main"
     description:
@@ -427,21 +434,21 @@ packages:
       name: test
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.6.8"
+    version: "1.9.1"
   test_api:
     dependency: transitive
     description:
       name: test_api
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.2.7"
+    version: "0.2.8"
   test_core:
     dependency: transitive
     description:
       name: test_core
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.2.9"
+    version: "0.2.12"
   timing:
     dependency: transitive
     description:

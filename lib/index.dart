@@ -83,7 +83,7 @@ bool walk(String srcDir, String distDir, String tag) {
         }
         attrs.write("    ");
       });
-      String className = name[0].toUpperCase() + name.substring(1);
+      String className = changeToCamelCase(name, true);
       var dist = format(tpl, [
         name,
         className,
