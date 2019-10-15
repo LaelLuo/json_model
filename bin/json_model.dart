@@ -5,7 +5,7 @@ import 'package:path/path.dart' as path;
 import 'build_runner.dart' as br;
 
 const tpl =
-    "import 'package:json_annotation/json_annotation.dart';\n%t\npart '%s.g.dart';\n\n@JsonSerializable()\nclass %s {\n    %s();\n\n    %s\n    factory %s.fromJson(Map<String,dynamic> json) => _\$%sFromJson(json);\n    Map<String, dynamic> toJson() => _\$%sToJson(this);\n}\n";
+    "import 'package:json_annotation/json_annotation.dart';\n%t\npart '%s.g.dart';\n\n@JsonSerializable()\nclass %s {\n    %s;\n\n    %s\n    factory %s.fromJson(Map<String,dynamic> json) => _\$%sFromJson(json);\n    Map<String, dynamic> toJson() => _\$%sToJson(this);\n}\n";
 
 void main(List<String> args) {
   String src;
@@ -56,7 +56,9 @@ bool walk(String srcDir, String distDir, String tag) {
       var map = json.decode(file.readAsStringSync());
       //为了避免重复导入相同的包，我们用Set来保存生成的import语句。
       var set = new Set<String>();
+      String className = changeToCamelCase(name, true);
       StringBuffer attrs = new StringBuffer();
+      StringBuffer constructor = new StringBuffer("$className({");
       (map as Map<String, dynamic>).forEach((key, v) {
         if (key.startsWith("_")) return;
         if (key.startsWith("@")) {
@@ -70,26 +72,30 @@ bool walk(String srcDir, String distDir, String tag) {
           attrs.writeln(";");
         } else {
           if (key.contains("_")) {
+            var propertyName = changeToCamelCase(key, false);
             attrs.write('@JsonKey(name: "$key")');
             attrs.write(" ");
             attrs.write(getType(v, set, name, tag));
             attrs.write(" ");
-            attrs.write(changeToCamelCase(key, false));
+            attrs.write(propertyName);
             attrs.writeln(";");
+            constructor.write("this.$propertyName,");
           } else {
+            var propertyName = changeToCamelCase(key, false);
             attrs.write(getType(v, set, name, tag));
             attrs.write(" ");
             attrs.write(key);
             attrs.writeln(";");
+            constructor.write("this.$propertyName,");
           }
         }
         attrs.write("    ");
       });
-      String className = changeToCamelCase(name, true);
+      constructor.write("});");
       var dist = format(tpl, [
         name,
         className,
-        className,
+        constructor.toString(),
         attrs.toString(),
         className,
         className,
