@@ -82,6 +82,7 @@ bool walk(String srcDir, String distDir, String tag) {
             constructor.write("this.$propertyName,");
           } else {
             var propertyName = changeToCamelCase(key, false);
+            // name文件名 tag
             attrs.write(getType(v, set, name, tag));
             attrs.write(" ");
             attrs.write(key);
@@ -163,7 +164,7 @@ String getType(v, Set<String> set, String current, tag) {
       if (type.toLowerCase() != current && !isBuiltInType(type)) {
         set.add('import "$type.dart"');
       }
-      return "List<${changeFirstChar(type)}>";
+      return "List<${changeToCamelCase(type, true)}>";
     } else if (v.startsWith(tag)) {
       var fileName = changeFirstChar(v.substring(1), false);
       if (fileName.toLowerCase() != current) {
