@@ -89,7 +89,6 @@ bool walk(String srcDir, String distDir, String tag) {
         }
         attrs.write("    ");
       });
-<<<<<<< HEAD
       constructor.write("});");
       var dist = format(tpl, [
         name,
@@ -103,14 +102,6 @@ bool walk(String srcDir, String distDir, String tag) {
       var _import = set.join(";\r\n");
       _import += _import.isEmpty ? "" : ";";
       dist = dist.replaceFirst("%t", _import);
-=======
-      String className=camelCaseClassName(name);
-      var dist=format(tpl,[name,className,className,attrs.toString(),
-      className,className,className]);
-      var _import=set.join(";\r\n");
-      _import+=_import.isEmpty?"":";";
-      dist=dist.replaceFirst("%t",_import );
->>>>>>> master
       //将生成的模板输出
       var p =
           f.path.replaceFirst(srcDir, distDir).replaceFirst(".json", ".dart");
@@ -170,16 +161,6 @@ String getType(v, Set<String> set, String current, tag) {
       if (type.toLowerCase() != current && !isBuiltInType(type)) {
         set.add('import "$type.dart"');
       }
-<<<<<<< HEAD
-      return "List<${changeFirstChar(type)}>";
-    } else if (v.startsWith(tag)) {
-      var fileName = changeFirstChar(v.substring(1), false);
-      if (fileName.toLowerCase() != current) {
-        set.add('import "$fileName.dart"');
-      }
-      return changeToCamelCase(fileName, true);
-    } else if (v.startsWith("@")) {
-=======
       return "List<${camelCaseClassName(type)}>";
 
     }else if(v.startsWith(tag)){
@@ -189,7 +170,6 @@ String getType(v, Set<String> set, String current, tag) {
       }
       return camelCaseClassName(fileName);
     }else if(v.startsWith("@")){
->>>>>>> master
       return v;
     }
     return "String";
@@ -215,8 +195,6 @@ String format(String fmt, List<Object> params) {
 
   return fmt.replaceAllMapped("%s", replace);
 }
-<<<<<<< HEAD
-=======
 
 ///Change file name to camel case class name
 String camelCaseClassName(String name) {
@@ -224,4 +202,3 @@ String camelCaseClassName(String name) {
   return parts.map(changeFirstChar)
     .join('');
 }
->>>>>>> master

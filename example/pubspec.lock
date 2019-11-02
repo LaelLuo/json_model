@@ -7,7 +7,7 @@ packages:
       name: analyzer
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.36.4"
+    version: "0.37.1+1"
   args:
     dependency: transitive
     description:
@@ -28,7 +28,7 @@ packages:
       name: build
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.1.6"
+    version: "1.2.1"
   build_config:
     dependency: transitive
     description:
@@ -42,28 +42,28 @@ packages:
       name: build_daemon
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.0.0"
+    version: "2.1.0"
   build_resolvers:
     dependency: transitive
     description:
       name: build_resolvers
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.0.7"
+    version: "1.2.1"
   build_runner:
     dependency: transitive
     description:
       name: build_runner
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.6.7"
+    version: "1.7.1"
   build_runner_core:
     dependency: transitive
     description:
       name: build_runner_core
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "3.0.9"
+    version: "4.1.0"
   built_collection:
     dependency: transitive
     description:
@@ -147,7 +147,7 @@ packages:
       name: front_end
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.1.19"
+    version: "0.1.21+1"
   glob:
     dependency: transitive
     description:
@@ -210,28 +210,28 @@ packages:
       name: json_annotation
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.3.0"
+    version: "3.0.0"
   json_model:
     dependency: "direct dev"
     description:
       path: ".."
       relative: true
     source: path
-    version: "0.0.2"
+    version: "0.0.7"
   json_serializable:
     dependency: transitive
     description:
       name: json_serializable
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.3.0"
+    version: "3.2.3"
   kernel:
     dependency: transitive
     description:
       name: kernel
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.3.19"
+    version: "0.3.21+1"
   logging:
     dependency: transitive
     description:
