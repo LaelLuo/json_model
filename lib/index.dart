@@ -5,7 +5,7 @@ import 'package:path/path.dart' as path;
 import 'build_runner.dart' as br;
 
 const tpl =
-    "import 'package:json_annotation/json_annotation.dart';\nimport '../base_response.dart';\n%t\npart '%s.g.dart';\n\n@JsonSerializable()\nclass %s implements BaseResponse {\n    %s\n\n    %s\n    @override\nfactory %s.fromJson(Map<String,dynamic> json) => _\$%sFromJson(json);\n    @override\nMap<String, dynamic> toJson() => _\$%sToJson(this);\n}\n";
+    "import 'package:json_annotation/json_annotation.dart';\n%t\npart '%s.g.dart';\n\n@JsonSerializable()\nclass %s {\n    %s\n\n    %s\n    factory %s.fromJson(Map<String,dynamic> json) => _\$%sFromJson(json);\n    Map<String, dynamic> toJson() => _\$%sToJson(this);\n}\n";
 
 void run(List<String> args) {
   String src;
@@ -23,24 +23,9 @@ void run(List<String> args) {
   parser.addOption('tag',
       defaultsTo: '\$', callback: (v) => tag = v, help: "Specify the tag ");
   parser.parse(args);
-  createBaseResponseFile(dist);
   if (walk(src, dist, tag)) {
     br.run(['build', '--delete-conflicting-outputs']);
   }
-}
-
-void createBaseResponseFile(String distDir) {
-  if (distDir.endsWith("/")) distDir = distDir.substring(0, distDir.length - 1);
-  if (!Directory(distDir).existsSync()) {
-    Directory(distDir).createSync(recursive: true);
-  }
-  var file = File("$distDir/base_response.dart");
-  file.writeAsStringSync("""
-  abstract class BaseResponse {
-    BaseResponse.fromJson(Map<String, dynamic> json);
-    Map<String, dynamic> toJson();
-  }
-  """);
 }
 
 //遍历JSON目录生成模板
@@ -177,13 +162,14 @@ String getType(v, Set<String> set, String current, tag) {
         set.add('import "$type.dart"');
       }
       return "List<${camelCaseClassName(type)}>";
-    } else if (v.startsWith(tag)) {
-      var fileName = changeFirstChar(v.substring(1), false);
-      if (fileName.toLowerCase() != current) {
+
+    }else if(v.startsWith(tag)){
+      var fileName=changeFirstChar(v.substring(1),false);
+      if(fileName.toLowerCase()!=current) {
         set.add('import "$fileName.dart"');
       }
       return camelCaseClassName(fileName);
-    } else if (v.startsWith("@")) {
+    }else if(v.startsWith("@")){
       return v;
     }
     return "String";
@@ -212,6 +198,7 @@ String format(String fmt, List<Object> params) {
 
 ///Change file name to camel case class name
 String camelCaseClassName(String name) {
-  final parts = name.split('_');
-  return parts.map(changeFirstChar).join('');
+  final parts=name.split('_');
+  return parts.map(changeFirstChar)
+    .join('');
 }
