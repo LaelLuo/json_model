@@ -170,7 +170,7 @@ String getType(v, Set<String> set, String current, tag) {
       if (fileName.toLowerCase() != current) {
         set.add('import "$fileName.dart"');
       }
-      return changeFirstChar(fileName);
+      return changeToCamelCase(fileName, true);
     } else if (v.startsWith("@")) {
       return v;
     }
