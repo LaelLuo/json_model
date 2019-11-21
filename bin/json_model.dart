@@ -81,13 +81,12 @@ bool walk(String srcDir, String distDir, String tag) {
             attrs.writeln(";");
             constructor.write("this.$propertyName,");
           } else {
-            var propertyName = changeToCamelCase(key, false);
             // name文件名 tag
             attrs.write(getType(v, set, name, tag));
             attrs.write(" ");
             attrs.write(key);
             attrs.writeln(";");
-            constructor.write("this.$propertyName,");
+            constructor.write("this.$key,");
           }
         }
         attrs.write("    ");
